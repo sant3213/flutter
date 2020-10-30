@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/Widgets.dart';
 
 import 'SecondPage.dart';
 import 'User.dart';
@@ -46,7 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView(padding: EdgeInsets.all(10.0), children: <Widget>[
+      body: ListView(padding: EdgeInsets.all(10.0),
+          children: <Widget>[
         Center(
       child: Form(
           key: _formKey,
@@ -54,20 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Expanded(
-                  // wrap your Column in Expanded
                   child: Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Column(
                       children: [
-                        TextFormField(
-                          controller: emailController,
-                          decoration: const InputDecoration(
-                            icon: Icon(Icons.person),
-                            hintText: 'Enter your username',
-                            labelText: 'Username *',
-                          ),
-                          validator: (value) => EmailValidator.validate(value) ? null: "Por favor ingrese un email válido",
-                        ),
+                        Widgets().getTextFormFielEmaildWidget(emailController, 'Ingrese su correo', 'Correo *'),
                         TextFormField(
                           obscureText: true,
                           controller: passwordController,
